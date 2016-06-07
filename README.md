@@ -32,9 +32,9 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
     * The "name" is what needs to be provided when authenticating via the REST call (url parameter: name=)
     * The validity is expressed as a number of minutes (525600 minutes = 1 year in the example above)
 
-  ##how to get started:##
-    * Once setup, you can use any browser to authenticate with a call similar to this one:
-        
+  ##How to Get Started:##
+  * Once setup, you can use any browser to authenticate with a call similar to this one:
+    
     http://192.168.1.60:8080/UC4Rest-0.1/api/awa/login/v1/Auth?login=BSP&client=200&pwd=Un1ver$e&connection=AEPROD
   
   => you should get a response with an authentication token:
@@ -45,7 +45,7 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
         "expdate": "2017-06-07 11:07:22"
       }
       
-    * Then you can use the token to run other commands:
+   * Then you can use the token to run other commands:
     
     http://192.168.1.60:8080/UC4Rest-0.1/api/awa/search/v1/Jobs?name=CE*&token=k2lcl4vofh1g5m8f14v159tbrk
     
