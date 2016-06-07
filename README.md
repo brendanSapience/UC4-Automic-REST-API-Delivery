@@ -2,9 +2,10 @@
 
 _The Repository contains the latest stable WAR file for the Automic Restful API_
  
-**Install / Deployment Procedure:**
+##Install / Deployment Procedure:##
 
   1- Deploy the WAR file in your web server (ex: Apache Tomcat)
+  
   2- Configure the ConnectionConfig.json file in the root directory of the web app:
   
     
@@ -31,7 +32,7 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
     * The "name" is what needs to be provided when authenticating via the REST call (url parameter: name=)
     * The validity is expressed as a number of minutes (525600 minutes = 1 year in the example above)
 
-  * how to get started:
+  ##how to get started:##
     * Once setup, you can use any browser to authenticate with a call similar to this one:
         
     http://192.168.1.60:8080/UC4Rest-0.1/api/awa/login/v1/Auth?login=BSP&client=200&pwd=Un1ver$e&connection=AEPROD
