@@ -17,7 +17,8 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
         		"dept":"AUTOMIC",
         		"lang":"E",
         		"ports":["2217","2218"],
-        		"validity":525600
+        		"validity":525600,
+        		"RESTadmin":true
         	}
       	]
       }
@@ -31,6 +32,7 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
     * This config file is used to shield users from having to know Department, hostname and ports of the AE.. also to control the validity period
     * The "name" is what needs to be provided when authenticating via the REST call (url parameter: name=)
     * The validity is expressed as a number of minutes (525600 minutes = 1 year in the example above)
+    * The RESTadmin parameter gives access to certain admin features related to this application, not to AE
 
   ##How to Get Started:##
   * Once setup, you can use any browser to authenticate with a call similar to this one:
@@ -49,6 +51,8 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
     
     http://192.168.1.60:8080/UC4Rest-0.1/api/awa/search/v1/Jobs?name=CE*&token=k2lcl4vofh1g5m8f14v159tbrk
     
+    (note that you can also pass the token as a header parameter instead of a url parameter)
+
   => you should get a nice JSON response from it:
   
       {
