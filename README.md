@@ -13,8 +13,9 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
       	[
         	{
         		"name":"AEPROD",
-        		"host":"192.168.1.60",
+        		"host":"AETestHost",
         		"dept":"AUTOMIC",
+        		"araurl":"http://AETestHost/ARA",
         		"lang":"E",
         		"ports":["2217","2218"],
         		"validity":525600,
@@ -27,6 +28,7 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
     * You can declare as many connections as you want (their "name" needs to be unique thought)
     * You can modify the validity period (expressed in minutes)
     * The host can be an IP adress or a hostname
+    * The araurl is only required if using this rest api with ara as well as awa
   
   * what you need to know about this file:
     * This config file is used to shield users from having to know Department, hostname and ports of the AE.. also to control the validity period
@@ -37,7 +39,7 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
   ##How to Get Started:##
   * Once setup, you can use any browser to authenticate with a call similar to this one:
     
-    http://192.168.1.60:8080/UC4Rest-0.1/api/awa/login/v1/Auth?login=BSP&client=200&pwd=Un1ver$e&connection=AEPROD
+    http://hostname:8080/UC4Rest/api/awa/login/v1/Auth?login=BSP&client=200&pwd=Un1ver$e&connection=AEPROD
   
   => you should get a response with an authentication token:
 
@@ -46,15 +48,78 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
         "token": "gde7oougmpd97kupvde303kunh",
         "expdate": "2017-06-07 11:07:22"
       }
-      
-   * Then you can use the token to run other commands:
-    
-    http://192.168.1.60:8080/UC4Rest-0.1/api/awa/search/v1/Jobs?name=CE*&token=k2lcl4vofh1g5m8f14v159tbrk
-    
-    (note that you can also pass the token as a header parameter instead of a url parameter)
 
-  => you should get a nice JSON response from it:
-  
+  * Once authenticated, you can use the token to check out the list of objects supported (for ara or awa):
+
+    http://hostname:8080/UC4Rest/api/ara/objects?token=mytoken
+    http://hostname:8080/UC4Rest/api/awa/objects?token=mytoken
+
+      {
+        "status": "success",
+        "count": 9,
+        "objects": [
+          "Activities",
+          "All",
+          "Auth",
+          "Changes",
+          "Client",
+          "Engine",
+          "Jobs",
+          "Misc",
+          "Statistics"
+        ]
+}
+
+  * Once you have the list of objects, you can check out which actions (and which versions) are supported for each object:
+     (this can also be done with a POST request in order to display POST actions supported)
+
+    http://hostname:8080/UC4Rest/api/awa/help/v1/All?token=mytoken
+    
+    {
+       "status": "success",
+       "type": "GET",
+       "count": 2,
+       "data": [
+         {
+           "operation": "export",
+           "versions": [
+             "exportv1"
+           ]
+         },
+         {
+           "operation": "search",
+           "versions": [
+             "searchv1",
+             "searchv2"
+           ]
+         }
+       ]
+}
+
+  * Once you have selected an action, you can check out which parameters are required for it, using method=usage as url parameters:
+
+    http://hostname:8080/UC4Rest/api/awa/search/v1/All?method=usage?token=mytoken
+    
+      {
+       "status": "success",
+       "required_parameters": [
+         "name (format: name= < UC4RegEx > )"
+       ],
+       "optional_parameters": [
+         "search_usage (format: search_usage=Y)"
+       ],
+       "optional_filters": [],
+       "required_methods": [],
+       "optional_methods": [
+         "usage"
+       ],
+       "developer_comment": null
+     }
+    
+   * once everything is selected.. you can run operations:
+    
+    http://192.168.1.60:8080/UC4Rest-0.1/api/awa/search/v1/All?name=CE*&token=mytoken
+
       {
         "success": true,
         "count": 2,
