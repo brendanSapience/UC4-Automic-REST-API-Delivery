@@ -3716,10 +3716,7 @@
 												"value": "{{TOKEN}}"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
+										"body": {},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/search/v1/Activities",
 											"protocol": "http",
@@ -9003,7 +9000,7 @@
 										],
 										"body": {},
 										"url": {
-											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/display/v1/Jobs?name=MY.AUTO.CREATED.JOB.5",
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/display/v1/Jobs?name=MY.REST.JOB.1",
 											"protocol": "http",
 											"host": [
 												"{{HOSTNAME}}"
@@ -9020,7 +9017,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "MY.AUTO.CREATED.JOB.5",
+													"value": "MY.REST.JOB.1",
 													"equals": true
 												}
 											]
@@ -10272,6 +10269,275 @@
 								}
 							],
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Queues",
+							"description": "",
+							"item": [
+								{
+									"name": "list - Queues - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/list/v1/Queues",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"list",
+												"v1",
+												"Queues"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stop - Queues - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/stop/v1/Queues?name=QUEUE.TST.1",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"stop",
+												"v1",
+												"Queues"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "QUEUE.TST.1",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "start - Queues - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/start/v1/Queues?name=QUEUE.TST.1",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"start",
+												"v1",
+												"Queues"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "QUEUE.TST.1",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "change Attributes - Queues - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"maxslots\":100,\r\n\t\"priority\":011\r\n}"
+										},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/update/v1/Queues?name=QUEUE.TST.1&commit=Y",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"update",
+												"v1",
+												"Queues"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "QUEUE.TST.1",
+													"equals": true
+												},
+												{
+													"key": "commit",
+													"value": "Y",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "change Attributes - Queues - v1 (only maxslot)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"maxslots\":101\r\n}"
+										},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/update/v1/Queues?name=QUEUE.TST.1&commit=Y",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"update",
+												"v1",
+												"Queues"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "QUEUE.TST.1",
+													"equals": true
+												},
+												{
+													"key": "commit",
+													"value": "Y",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						}
 					],
 					"_postman_isSubFolder": true
@@ -11264,7 +11530,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"spec_filters\": {\n    \"active\": true,\n    \"inactive\": true,\n    \"postprocess\": \"(.*|\\n)*\",\n    \"preprocess\": \"(.*|\\n)*\",\n    \"process\": \"(.*|\\n)*\"\n  },\n  \"std_filters\": {\n    \"name\": \"REST.AUTO.TESTS.JOBS.1*\",\n    \"search_for_usage\": false,\n    \"search_text\": false,\n    \"search_text_docu\": false,\n    \"search_text_key\": false,\n    \"search_text_process\": false,\n    \"search_text_title\": false,\n    \"text\": \"*\"\n  },\n  \"updates\": {\n    \"status\": \"active\",\n    \"title\" : \".+,NEWTITLE\",\n    \"key1\" : \".+,NEWKEY1\",\n    \"key2\" : \".+,NEWKEY2\",\n    \"host\" : \".+,NEWHOST\"\n  }\n}"
+											"raw": "{\n  \"spec_filters\": {\n    \"active\": true,\n    \"inactive\": true,\n    \"postprocess\": \"(.*|\\n)*\",\n    \"preprocess\": \"(.*|\\n)*\",\n    \"process\": \"(.*|\\n)*\"\n  },\n  \"std_filters\": {\n    \"name\": \"POC.JOBS.1*\",\n    \"search_for_usage\": false,\n    \"search_text\": false,\n    \"search_text_docu\": false,\n    \"search_text_key\": false,\n    \"search_text_process\": false,\n    \"search_text_title\": false,\n    \"text\": \"*\"\n  },\n  \"updates\": {\n    \"status\": \"inactive\",\n    \"title\" : \".*,NEWTITLE\",\n    \"key1\" : \".+,NEWKEY1\",\n    \"key2\" : \".+,NEWKEY2\",\n    \"host\" : \".+,NEWHOST\"\n  }\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/update/v1/Jobs?commit=Y",
@@ -11330,7 +11596,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"spec_filters\": {\n    \"active\": true,\n    \"inactive\": true,\n    \"postprocess\": \"(.*|\\n)*\",\n    \"preprocess\": \"(.*|\\n)*\",\n    \"process\": \"(.*|\\n)*\"\n  },\n  \"std_filters\": {\n    \"name\": \"MY.CIT.JOB.1*\",\n    \"search_for_usage\": false,\n    \"search_text\": false,\n    \"search_text_docu\": false,\n    \"search_text_key\": false,\n    \"search_text_process\": false,\n    \"search_text_title\": false,\n    \"text\": \"*\"\n  },\n  \"updates\": {\n\t\"ra_values\" :\n    [\n     {\"uriOverride\":\"http://helloBonjour.com\"},\n     {\"requestReports\":\"true\"},\n     {\"responseToJobLog\":\"true\"}\n    ]\n  }\n}"
+											"raw": "{\n  \"spec_filters\": {\n    \"active\": true,\n    \"inactive\": true,\n    \"postprocess\": \"(.*|\\n)*\",\n    \"preprocess\": \"(.*|\\n)*\",\n    \"process\": \"(.*|\\n)*\"\n  },\n  \"std_filters\": {\n    \"name\": \"MY.REST.JOB.1*\",\n    \"search_for_usage\": false,\n    \"search_text\": false,\n    \"search_text_docu\": false,\n    \"search_text_key\": false,\n    \"search_text_process\": false,\n    \"search_text_title\": false,\n    \"text\": \"*\"\n  },\n  \"updates\": {\n\t\"ra_values\" :\n    [\n     {\"uriOverride\":\"http://TGIFriday.com\"},\n     {\"requestReports\":\"false\"},\n     {\"responseToJobLog\":\"false\"}\n    ]\n  }\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/update/v1/Jobs?commit=Y",
@@ -11543,11 +11809,15 @@
 											{
 												"key": "Token",
 												"value": "{{TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"type\" : \"JOBS.WIN\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.AUTO.CREATED.JOB.5\",\r\n  \"title\" : \"\",\r\n  \"host\" : \"WIN01\",\r\n  \"login\" : \"LOGIN.GENERAL\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"process\" : \"echo \\\"running!\\\"\\nping 127.0.0.1\\necho \\\"job done!\\\"\",\r\n  \"preprocess\" : \"echo preprocess here\\nping 127.0.0.1\",\r\n  \"postprocess\" : \"echo post process here\"\r\n  \r\n}"
+											"raw": "{\r\n  \"type\" : \"JOBS.WIN\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"POC.JOBS.1\",\r\n  \"title\" : \"my Job Title\",\r\n  \"host\" : \"WIN01\",\r\n  \"login\" : \"LOGIN.GENERAL\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"active\",\r\n  \"genatruntime\" : true,\r\n  \"process\" : \"echo \\\"running!\\\"\\nping 127.0.0.1\\necho \\\"job done!\\\"\",\r\n  \"preprocess\" : \"echo preprocess here\\nping 127.0.0.1\",\r\n  \"postprocess\" : \"echo post process here\"\r\n  \r\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/create/v1/Jobs?commit=Y",
@@ -11604,7 +11874,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"type\" : \"JOBS_SQL\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.AUTO.CREATED.SQL.JOB.5\",\r\n  \"title\" : \"\",\r\n  \"host\" : \"\",\r\n  \"login\" : \"\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"db_dbname\":\"MyDb\",\r\n  \"db_servername\":\"SQLServer:1433\"\r\n\r\n}"
+											"raw": "{\r\n  \"type\" : \"JOBS.SQL\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.AUTO.CREATED.SQL.JOB.5\",\r\n  \"title\" : \"\",\r\n  \"host\" : \"\",\r\n  \"login\" : \"\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"db_dbname\":\"MyDb\",\r\n  \"db_servername\":\"SQLServer:1433\"\r\n\r\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/create/v1/Jobs?commit=Y",
@@ -11660,7 +11930,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"type\" : \"JOBS_SQL\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.AUTO.CREATED.SQL.JOB.4\",\r\n  \"title\" : \"\",\r\n  \"host\" : \"\",\r\n  \"login\" : \"\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"db_connname\": \"MyConn\"\r\n}"
+											"raw": "{\r\n  \"type\" : \"JOBS.SQL\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.SQL.JOB.1\",\r\n  \"title\" : \"\",\r\n  \"host\" : \"\",\r\n  \"login\" : \"\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"db_connname\": \"MyConn\"\r\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/create/v1/Jobs?commit=Y",
@@ -11716,7 +11986,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"type\" : \"JOBS.WEBSERVICEREST.REST\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.CIT.JOB.2\",\r\n  \"title\" : \"\",\r\n  \"host\" : \"\",\r\n  \"login\" : \"\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"ra_values\" :\r\n    [\r\n     {\"uriOverride\":\"http://hello.com\"},\r\n     {\"requestReports\":\"true\"},\r\n     {\"responseToJobLog\":\"true\"}\r\n    ]\r\n}"
+											"raw": "{\r\n  \"type\" : \"JOBS.WEBSERVICEREST.REST\",\r\n  \"folder\" : \"0100/LAB\",\r\n  \"name\" : \"MY.REST.JOB.1\",\r\n  \"title\" : \"My job Title\",\r\n  \"host\" : \"\",\r\n  \"login\" : \"\",\r\n  \"queue\" : \"CLIENT_QUEUE\",\r\n  \"status\" : \"inactive\",\r\n  \"genatruntime\" : true,\r\n  \"ra_values\" :\r\n    [\r\n     {\"uriOverride\":\"http://HelloDKandMarc.com\"},\r\n     {\"requestReports\":\"true\"},\r\n     {\"responseToJobLog\":\"true\"}\r\n    ]\r\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/create/v1/Jobs?commit=Y",

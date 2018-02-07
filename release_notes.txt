@@ -1,0 +1,16 @@
+
+
+## Feb 8, 2018
+
+- added Queues to API
+	list:  GET ex: http://localhost:9090/Automic-RESTful-Server/api/awa/start/v1/Queues
+	stop <name = Queue Name>:  GET ex: http://localhost:9090/Automic-RESTful-Server/api/awa/stop/v1/Queues?name=QUEUE.TST.1
+	start <name = Queue Name>: GET ex: http://localhost:9090/Automic-RESTful-Server/api/awa/start/v1/Queues?name=QUEUE.TST.1
+
+	update: POST ex: http://localhost:9090/Automic-RESTful-Server/api/awa/update/v1/Queues?name=QUEUE.TST.1&commit=Y
+		with JSON body:
+			{
+				"maxslots":100,
+				"priority":011
+			}
+		Note: the body doesnt need to contain both maxslots AND priority.
