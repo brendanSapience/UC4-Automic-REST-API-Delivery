@@ -3645,6 +3645,7 @@
 					"item": [
 						{
 							"name": "Activities",
+							"description": null,
 							"item": [
 								{
 									"name": "nooperation - Activities - v1 - no param",
@@ -4050,6 +4051,61 @@
 								},
 								{
 									"name": "run - Activities - v1 - simple execution",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"tests[\"has runid\"] = responseBody.has(\"runid\");",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"tests[\"runid is not 0\"] = jsonData.runid > 0;",
+													"",
+													"postman.setGlobalVariable(\"RUNID\", jsonData.runid);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/run/v1/Activities?name=REST.AUTO.RUNNABLE.JOBS.2",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"run",
+												"v1",
+												"Activities"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "REST.AUTO.RUNNABLE.JOBS.2",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "run - Activities - v1 - simple execution (one off)",
 									"event": [
 										{
 											"listen": "test",
@@ -5191,6 +5247,57 @@
 												{
 													"key": "runid",
 													"value": "{{RUNID}}",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "go - Activities - v1 - go immediatly in workflow copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"tests[\"Task Go Now\"] = responseBody.has(\"Task Go Now\");",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/showprompts/v1/Activities?runid=1091004",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"showprompts",
+												"v1",
+												"Activities"
+											],
+											"query": [
+												{
+													"key": "runid",
+													"value": "1091004",
 													"equals": true
 												}
 											]
@@ -9580,6 +9687,204 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "submit- prompts - v1 (Override)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5dc8be80-c551-4836-8097-f85cf02acda8",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"prompts\" : \r\n\t\t[\r\n     \t\t{\r\n\t\t\t\t\"name\": \"PRPT.AC.1\",\r\n     \t\t\t\"elements\": [\r\n        \t\t\t{\r\n          \t\t\t\t\"variable\": \"NEWLOGIN1#\",\r\n          \t\t\t\t\"value\": \"Bren\"\r\n        \t\t\t},\r\n        \t\t\t{\r\n          \t\t\t\t\"variable\": \"NEWPWD1#\",\r\n          \t\t\t\t\"value\": \"--108A48537B3C573668A70CFB1C77492C8A\"\r\n        \t\t\t}\r\n     \t\t\t]\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\t\t\t\t\"name\": \"PRPT.AC.2\",\r\n     \t\t\t\"elements\": [\r\n        \t\t\t{\r\n          \t\t\t\t\"variable\": \"COMBOVALUE1#\",\r\n          \t\t\t\t\"value\": \"Korn-Shell\"\r\n        \t\t\t}\r\n     \t\t\t]\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t]\r\n}"
+										},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/submit/v1/prompts?runid=1098036&name=JOBS.AC.1&override=Y",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"submit",
+												"v1",
+												"prompts"
+											],
+											"query": [
+												{
+													"key": "runid",
+													"value": "1098036",
+													"equals": true
+												},
+												{
+													"key": "name",
+													"value": "JOBS.AC.1",
+													"equals": true
+												},
+												{
+													"key": "override",
+													"value": "Y",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "submit- prompts - v1 (Override) Partial",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5dc8be80-c551-4836-8097-f85cf02acda8",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"prompts\" : \r\n\t\t[\r\n     \t\t{\r\n\t\t\t\t\"name\": \"PRPT.AC.1\",\r\n     \t\t\t\"elements\": [\r\n        \t\t\t{\r\n          \t\t\t\t\"variable\": \"NEWLOGIN1#\",\r\n          \t\t\t\t\"value\": \"Yli\"\r\n        \t\t\t},\r\n        \t\t\t{\r\n          \t\t\t\t\"variable\": \"NEWPWD1#\",\r\n          \t\t\t\t\"value\": \"MyNewPwd\"\r\n        \t\t\t}\r\n     \t\t\t]\r\n\t\t\t}\r\n\t\t]\r\n}"
+										},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/submit/v1/prompts?runid=1098038&name=JOBS.AC.1&override=Y",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"submit",
+												"v1",
+												"prompts"
+											],
+											"query": [
+												{
+													"key": "runid",
+													"value": "1098038",
+													"equals": true
+												},
+												{
+													"key": "name",
+													"value": "JOBS.AC.1",
+													"equals": true
+												},
+												{
+													"key": "override",
+													"value": "Y",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "submit- prompts - v1 (No Override)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5dc8be80-c551-4836-8097-f85cf02acda8",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/submit/v1/prompts?runid=1098040&name=JOBS.AC.1&override=N",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"submit",
+												"v1",
+												"prompts"
+											],
+											"query": [
+												{
+													"key": "runid",
+													"value": "1098040",
+													"equals": true
+												},
+												{
+													"key": "name",
+													"value": "JOBS.AC.1",
+													"equals": true
+												},
+												{
+													"key": "override",
+													"value": "N",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"_postman_isSubFolder": true
@@ -10298,7 +10603,98 @@
 										],
 										"body": {},
 										"url": {
-											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/list/v1/Queues",
+											"raw": "http://{{HOSTNAME}}:9394/{{APPNAME}}/api/awa/list/v1/Queues",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "9394",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"list",
+												"v1",
+												"Queues"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "list - Queues - v1 (Usage)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:9394/{{APPNAME}}/api/awa/list/v1/Queues?method=usage",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "9394",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"list",
+												"v1",
+												"Queues"
+											],
+											"query": [
+												{
+													"key": "method",
+													"value": "usage",
+													"equals": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "list - Queues - v1 (addl details)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4dc76c51-d8b1-4510-af25-98388f5e0242",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/list/v1/Queues?additional=true",
 											"protocol": "http",
 											"host": [
 												"{{HOSTNAME}}"
@@ -10311,6 +10707,13 @@
 												"list",
 												"v1",
 												"Queues"
+											],
+											"query": [
+												{
+													"key": "additional",
+													"value": "true",
+													"equals": true
+												}
 											]
 										}
 									},
@@ -10442,7 +10845,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n\t\"maxslots\":100,\r\n\t\"priority\":011\r\n}"
+											"raw": "{\r\n\t\"maxslots\":200,\r\n\t\"priority\":012,\r\n\t\"title\":\"my new title\",\r\n\t\"considerERT\":true,\r\n\t\"arch1\":\"key 1\",\r\n\t\"arch2\":\"key 2\"\r\n}"
 										},
 										"url": {
 											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/update/v1/Queues?name=QUEUE.TST.1&commit=Y",
