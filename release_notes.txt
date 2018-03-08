@@ -1,5 +1,37 @@
+## March 8, 2018
 
+- added Prompts Submission to API (for restarted tasks in "waiting for user input" status)
+	method: submit: POST ex: http://localhost:9090/Automic-RESTful-Server/api/awa/submit/v1/prompts
+		3 URL Parameters:
+			runid (runid=1233423): runid of the run to use for prompt submission (runid of the "waiting for user input" task)
+			name (name=MY.JOB.1): object name (name of the "waiting for user input" task)
+			override (override=Y or override=N): override existing prompt values (default: N) 
 
+		ex: http://localhost:9090/Automic-RESTful-Server/api/awa/submit/v1/prompts?runid=12332434&name=MY.JOB.1&override=N
+			with JSON Body empty (since there is no override, the existing values within the prompt are used)
+			
+		ex: http://localhost:9090/Automic-RESTful-Server/api/awa/submit/v1/prompts?runid=12332434&name=MY.JOB.1&override=Y
+			with JSON Body (since we override values, the new prompt values must be specified in the JSON Body):
+			{
+				"prompts" : 
+				[
+					{
+						"name": "PRPT.AC.1",
+						"elements": [
+							{
+								"variable": "NEWLOGIN1#",
+								"value": "Yli"
+							},
+							{
+								"variable": "NEWPWD1#",
+								"value": "MyNewPwd"
+							}
+						]
+					}
+				]
+			}
+			
+			
 ## Feb 8, 2018
 
 - added Queues to API
