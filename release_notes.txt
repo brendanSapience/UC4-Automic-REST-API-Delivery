@@ -1,3 +1,12 @@
+## April 5, 2018
+
+- added a call to retrieve ERT (Estimated Run Time) for objects
+	method: ert: GET ex: http://localhost:9090/Automic-RESTful-Server/api/awa/ert/v1/Statistics?name=MY.JOBS.1
+		1 URL Parameter:
+			name (name=MY.JOBP): name of the Automic Executable Object to retrieve ERT data for.
+
+
+
 ## March 8, 2018
 
 - added Prompts Submission to API (for restarted tasks in "waiting for user input" status)
