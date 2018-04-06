@@ -1,3 +1,25 @@
+## April 6, 2018
+
+- added a call to delete agents (this needs to be done from client 0)
+	method: ert: GET ex: http://localhost:9090/Automic-RESTful-Server/api/awa/delete/v1/Agents?name=WIN02
+		1 URL Parameter:
+			name (name=WIN01): name of the Automic Agent
+		!! This can only be done after an Agent has been Terminated successfully.. luckily, there is a method to terminate an agent (quit):
+			http://localhost:9090/Automic-RESTful-Server/api/awa/quit/v1/Agents?name=WIN02
+			
+		and one to check the status of an agent:
+			http://localhost:9090/Automic-RESTful-Server/api/awa/show/v1/Agents?name=WIN02
+			("active" should be "False" before running the delete command.
+			
+			
+
+- added a call to renew the transfer key for agents (this needs to be done from client 0)
+	method: ert: GET ex: http://localhost:9090/Automic-RESTful-Server/api/awa/renewkey/v1/Agents?name=WIN02
+		1 URL Parameter:
+			name (name=WIN01): name of the Automic Agent
+
+
+
 ## April 5, 2018
 
 - added a call to retrieve ERT (Estimated Run Time) for objects
