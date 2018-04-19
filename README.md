@@ -16,7 +16,6 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
         		"name":"AEPROD",
         		"host":"AETestHost",
         		"dept":"AUTOMIC",
-        		"araurl":"http://AETestHost/ARA",
         		"lang":"E",
         		"ports":["2217","2218"],
         		"validity":525600,
@@ -29,7 +28,6 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
     * You can declare as many connections as you want (their "name" needs to be unique thought)
     * You can modify the validity period (expressed in minutes)
     * The host can be an IP adress or a hostname
-    * The araurl is only required if using this rest api with ara as well as awa
   
   * what you need to know about this file:
     * This config file is used to shield users from having to know Department, hostname and ports of the AE.. also to control the validity period
@@ -40,7 +38,7 @@ _The Repository contains the latest stable WAR file for the Automic Restful API_
   ##How to Get Started:##
   * Once setup, you can use any browser to authenticate with a call similar to this one:
     
-    http://hostname:8080/UC4Rest/api/awa/login/v1/Auth?login=BSP&client=200&pwd=Un1ver$e&connection=AEPROD
+    http://hostname:8080/UC4Rest/api/awa/login/v1/Auth?login=BSP&client=200&pwd=MyPassword&connection=AEPROD
   
   => you should get a response with an authentication token:
 
