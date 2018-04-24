@@ -1,3 +1,15 @@
+
+
+## April 22, 2018
+
+- added url parameters for Activities Search.
+	method: search: GET ex: http://localhost:9394/AutomicRest/api/awa/search/v1/Activities?filters=[status:1800]&order=reverse&sort_by=endtime"
+		1 URL Parameter:
+			order: value can be either "normal" (ascending order) or "reverse" (descending order)
+			sort_by: value can be either "starttime", "endtime", "activationtime": determines how the results should be sorted
+
+
+
 ## April 6, 2018
 
 - added a call to delete agents (this needs to be done from client 0)
