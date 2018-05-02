@@ -1,8 +1,7 @@
 {
 	"info": {
-		"name": "_AE_Official",
 		"_postman_id": "5b1b73ed-a493-7c86-b129-730e356ef101",
-		"description": "",
+		"name": "_AE_Official",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -57,8 +56,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"apikeys"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -92,8 +90,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"apikeys"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -127,8 +124,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"{{EDDA_REST_ANALYTICSAPIKEY}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -148,7 +144,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"type\": \"SIMPLE.EVENT\",\n  \"timestamp\":\"2017-06-20T11:07:10.898Z\",\n  \"values\": {\n    \"id\": 123,\n    \"desc\": \"Reboot Server\",\n    \"hostname\":\"server1.domain\",\n    \"approval\": false,\n    \"status\":\"running\"\n  }\n}"
+									"raw": "{\n  \"type\": \"TICKET.DEFINITION\",\n  \"timestamp\":\"2017-06-20T11:07:10.898Z\",\n  \"values\": {\n    \"id\": 123,\n    \"desc\": \"Reboot Server\",\n    \"hostname\":\"server1.domain\",\n    \"approval\": false,\n    \"status\":\"running\"\n  }\n}"
 								},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{EDDA_REST_PORT}}/{{EDDA_REST_URL}}/{{EDDA_REST_VERSION}}/events",
@@ -162,8 +158,109 @@
 										"{{EDDA_REST_VERSION}}",
 										"events"
 									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send 1 Edda Event (Approval Required)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{EDDA_REST_ANALYTICSAPIKEY}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"type\": \"TICKET.DEFINITION\",\n  \"timestamp\":\"2017-06-20T11:07:10.898Z\",\n  \"values\": {\n    \"id\": 123,\n    \"desc\": \"Reboot Server\",\n    \"hostname\":\"server1.domain\",\n    \"approval\": true,\n    \"status\":\"running\"\n  }\n}"
 								},
-								"description": null
+								"url": {
+									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{EDDA_REST_PORT}}/{{EDDA_REST_URL}}/{{EDDA_REST_VERSION}}/events",
+									"protocol": "{{URLROOT}}",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"port": "{{EDDA_REST_PORT}}",
+									"path": [
+										"{{EDDA_REST_URL}}",
+										"{{EDDA_REST_VERSION}}",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send 1 Edda Event (State Change) (running)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{EDDA_REST_ANALYTICSAPIKEY}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"type\": \"GET.STATE\",\n  \"timestamp\":\"2017-06-20T11:07:10.898Z\",\n  \"values\": {\n    \"status\":\"running\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{EDDA_REST_PORT}}/{{EDDA_REST_URL}}/{{EDDA_REST_VERSION}}/events",
+									"protocol": "{{URLROOT}}",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"port": "{{EDDA_REST_PORT}}",
+									"path": [
+										"{{EDDA_REST_URL}}",
+										"{{EDDA_REST_VERSION}}",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send 1 Edda Event (State Change) (Stopped)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{EDDA_REST_ANALYTICSAPIKEY}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"type\": \"GET.STATE\",\n  \"timestamp\":\"2017-06-20T11:07:10.898Z\",\n  \"values\": {\n    \"status\":\"stopped\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{EDDA_REST_PORT}}/{{EDDA_REST_URL}}/{{EDDA_REST_VERSION}}/events",
+									"protocol": "{{URLROOT}}",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"port": "{{EDDA_REST_PORT}}",
+									"path": [
+										"{{EDDA_REST_URL}}",
+										"{{EDDA_REST_VERSION}}",
+										"events"
+									]
+								}
 							},
 							"response": []
 						},
@@ -197,8 +294,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"events"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -232,8 +328,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"events"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -274,8 +369,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"charts"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -321,8 +415,7 @@
 										"{{EDDA_REST_VERSION}}",
 										"shared_dashboards"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -373,12 +466,10 @@
 									"query": [
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -429,17 +520,14 @@
 									"query": [
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										},
 										{
 											"key": "name",
-											"value": "DASH.OVERVIEW.WORKFLOWS",
-											"equals": true
+											"value": "DASH.OVERVIEW.WORKFLOWS"
 										}
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -490,22 +578,18 @@
 									"query": [
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										},
 										{
 											"key": "name",
-											"value": "DASH.OVERVIEW.WORKFLOWS",
-											"equals": true
+											"value": "DASH.OVERVIEW.WORKFLOWS"
 										},
 										{
 											"key": "createdBy",
-											"value": "ARA/ARA",
-											"equals": true
+											"value": "ARA/ARA"
 										}
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -540,8 +624,7 @@
 										"shared_dashboards",
 										"{{DASHBOARDID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -576,8 +659,7 @@
 										"shared_dashboards",
 										"{{DASHBOARDID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -662,8 +744,7 @@
 										"{{AE_REST_CLIENT}}",
 										"executions"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -735,8 +816,7 @@
 										"{{AE_REST_CLIENT}}",
 										"executions"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -808,8 +888,7 @@
 										"{{AE_REST_CLIENT}}",
 										"executions"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -869,8 +948,7 @@
 										"executions",
 										"{{RUNID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -931,8 +1009,7 @@
 										"{{RUNID}}",
 										"status"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -993,8 +1070,7 @@
 										"{{RUNID}}",
 										"status"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1055,8 +1131,7 @@
 										"{{RUNID}}",
 										"children"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -1122,8 +1197,7 @@
 										"{{AE_REST_CLIENT}}",
 										"search"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1182,8 +1256,7 @@
 										"{{AE_REST_CLIENT}}",
 										"search"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1242,8 +1315,7 @@
 										"{{AE_REST_CLIENT}}",
 										"search"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1302,8 +1374,7 @@
 										"{{AE_REST_CLIENT}}",
 										"search"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1362,8 +1433,7 @@
 										"{{AE_REST_CLIENT}}",
 										"search"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1422,8 +1492,7 @@
 										"{{AE_REST_CLIENT}}",
 										"search"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -1502,8 +1571,7 @@
 										"100",
 										"executions"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -1562,10 +1630,7 @@
 								},
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/applications?max_results=100000",
 									"protocol": "{{URLROOT}}",
@@ -1581,12 +1646,10 @@
 									"query": [
 										{
 											"key": "max_results",
-											"value": "100000",
-											"equals": true
+											"value": "100000"
 										}
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1655,8 +1718,7 @@
 										"{{APPID}}",
 										"duplicate"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1724,8 +1786,7 @@
 										"applications",
 										"{{APPID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1793,8 +1854,7 @@
 										"applications",
 										"{{APPID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1846,10 +1906,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/applications/{{APPID}}",
 									"protocol": "{{URLROOT}}",
@@ -1863,8 +1920,7 @@
 										"applications",
 										"{{APPID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1902,10 +1958,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/applications/{{APPID}}/components{{COMPID}}",
 									"protocol": "{{URLROOT}}",
@@ -1920,8 +1973,7 @@
 										"{{APPID}}",
 										"components{{COMPID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1982,8 +2034,7 @@
 										"components",
 										"{{COMPID}}"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -2021,10 +2072,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/applications/{{APPID}}/profiles",
 									"protocol": "{{URLROOT}}",
@@ -2039,8 +2087,7 @@
 										"{{APPID}}",
 										"profiles"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2085,10 +2132,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/executions?max_results=100000",
 									"protocol": "{{URLROOT}}",
@@ -2104,12 +2148,10 @@
 									"query": [
 										{
 											"key": "max_results",
-											"value": "100000",
-											"equals": true
+											"value": "100000"
 										}
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -2167,8 +2209,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"executions"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2213,10 +2254,7 @@
 										"value": "Basic QUJDOjlCMjBDMjk3NUNGNEM5RTA2NDgxMzgxRUExRDUzNjcwMDlBQTkyRTU3QzUyNjAwQw=="
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/packages",
 									"protocol": "{{URLROOT}}",
@@ -2229,8 +2267,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"packages"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -2289,8 +2326,7 @@
 										"packages",
 										"13039"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2335,10 +2371,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/profiles",
 									"protocol": "{{URLROOT}}",
@@ -2351,8 +2384,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"profiles"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -2410,8 +2442,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"profiles"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -2471,8 +2502,7 @@
 										"4643",
 										"target_mappings"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -2532,8 +2562,7 @@
 										"4820",
 										"target_mappings"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2578,10 +2607,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/environments",
 									"protocol": "{{URLROOT}}",
@@ -2594,8 +2620,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"environments"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2640,10 +2665,7 @@
 										"value": "Basic MTAwL0FSQS9BUkE6QVJB"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{URLROOT}}://{{HOSTNAME}}:{{ARA_REST_PORT}}/{{ARA_REST_API_URL}}/{{ARA_REST_APIVERSION}}/logins",
 									"protocol": "{{URLROOT}}",
@@ -2656,8 +2678,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"logins"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2722,8 +2743,7 @@
 										"{{ARA_REST_APIVERSION}}",
 										"deployment_targets"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						}
@@ -2738,6 +2758,7 @@
 			"item": [
 				{
 					"name": "Auth Tests",
+					"description": null,
 					"item": [
 						{
 							"name": "help - Authentication",
@@ -2757,10 +2778,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/help/v1/auth",
 									"protocol": "http",
@@ -2806,10 +2824,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/login/v1/auth?login=ARA&pwd=ARA&connection=AEPROD&client=100",
 									"protocol": "http",
@@ -2828,23 +2843,19 @@
 									"query": [
 										{
 											"key": "login",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "pwd",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "connection",
-											"value": "AEPROD",
-											"equals": true
+											"value": "AEPROD"
 										},
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
 								},
@@ -2882,10 +2893,7 @@
 										"value": "Basic QVJBOkFSQQ=="
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/login/v1/auth?connection=AEPROD&client=100",
 									"protocol": "http",
@@ -2904,13 +2912,11 @@
 									"query": [
 										{
 											"key": "connection",
-											"value": "AEPROD",
-											"equals": true
+											"value": "AEPROD"
 										},
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
 								},
@@ -2942,10 +2948,7 @@
 										"value": "Basic QVJBOnNkZmFzZGY="
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/login/v1/auth?login=ARA&pwd=ARA&connection=AEPROD&client=100",
 									"protocol": "http",
@@ -2964,23 +2967,19 @@
 									"query": [
 										{
 											"key": "login",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "pwd",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "connection",
-											"value": "AEPROD",
-											"equals": true
+											"value": "AEPROD"
 										},
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
 								},
@@ -3015,10 +3014,7 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/show/v1/auth",
 									"protocol": "http",
@@ -3056,10 +3052,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/login/v1/auth?login=ARA&pwd=arara&connection=AEPROD&client=100",
 									"protocol": "http",
@@ -3078,23 +3071,19 @@
 									"query": [
 										{
 											"key": "login",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "pwd",
-											"value": "arara",
-											"equals": true
+											"value": "arara"
 										},
 										{
 											"key": "connection",
-											"value": "AEPROD",
-											"equals": true
+											"value": "AEPROD"
 										},
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
 								},
@@ -3126,10 +3115,7 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/logout/v1/auth?scope=all",
 									"protocol": "http",
@@ -3148,8 +3134,7 @@
 									"query": [
 										{
 											"key": "scope",
-											"value": "all",
-											"equals": true
+											"value": "all"
 										}
 									]
 								},
@@ -3182,10 +3167,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/login/v1/auth?login=ARA&pwd=ARA&connection=AEPROD&client=100",
 									"protocol": "http",
@@ -3204,23 +3186,19 @@
 									"query": [
 										{
 											"key": "login",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "pwd",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "connection",
-											"value": "AEPROD",
-											"equals": true
+											"value": "AEPROD"
 										},
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
 								},
@@ -3252,10 +3230,7 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/logout/v1/auth?token={{TOKEN}}",
 									"protocol": "http",
@@ -3274,8 +3249,7 @@
 									"query": [
 										{
 											"key": "token",
-											"value": "{{TOKEN}}",
-											"equals": true
+											"value": "{{TOKEN}}"
 										}
 									]
 								},
@@ -3300,10 +3274,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/logout/v1/auth?token=notoken",
 									"protocol": "http",
@@ -3322,8 +3293,7 @@
 									"query": [
 										{
 											"key": "token",
-											"value": "notoken",
-											"equals": true
+											"value": "notoken"
 										}
 									]
 								},
@@ -3357,10 +3327,7 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/encrypt/v1/Misc?key=Un1ver$e",
 									"protocol": "http",
@@ -3379,8 +3346,7 @@
 									"query": [
 										{
 											"key": "key",
-											"value": "Un1ver$e",
-											"equals": true
+											"value": "Un1ver$e"
 										}
 									]
 								}
@@ -3413,10 +3379,7 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/awa/decrypt/v1/Misc?key=--1057F4AAE06DF40F92",
 									"protocol": "http",
@@ -3434,8 +3397,7 @@
 									"query": [
 										{
 											"key": "key",
-											"value": "--1057F4AAE06DF40F92",
-											"equals": true
+											"value": "--1057F4AAE06DF40F92"
 										}
 									]
 								}
@@ -3468,12 +3430,9 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
-									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/awa/encrypt/v1/Misc?key=Un1ver$e&internal=",
+									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/awa/encrypt/v1/Misc?key=Un1ver$e&internal",
 									"protocol": "http",
 									"host": [
 										"{{HOSTNAME}}"
@@ -3489,13 +3448,11 @@
 									"query": [
 										{
 											"key": "key",
-											"value": "Un1ver$e",
-											"equals": true
+											"value": "Un1ver$e"
 										},
 										{
 											"key": "internal",
-											"value": "",
-											"equals": false
+											"value": null
 										}
 									]
 								}
@@ -3528,12 +3485,9 @@
 										"value": "{{TOKEN}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
-									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/awa/decrypt/v1/Misc?key=--1011A5E9D4669E1503&internal=",
+									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/awa/decrypt/v1/Misc?key=--1011A5E9D4669E1503&internal",
 									"protocol": "http",
 									"host": [
 										"{{HOSTNAME}}"
@@ -3549,13 +3503,11 @@
 									"query": [
 										{
 											"key": "key",
-											"value": "--1011A5E9D4669E1503",
-											"equals": true
+											"value": "--1011A5E9D4669E1503"
 										},
 										{
 											"key": "internal",
-											"value": "",
-											"equals": false
+											"value": null
 										}
 									]
 								}
@@ -3592,10 +3544,7 @@
 										"value": "Basic YnJlbjp1bml2ZXJzZQ=="
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/awa/login/v1/auth?login=ARA&pwd=ARA&connection=AEPROD&client=100",
 									"protocol": "http",
@@ -3613,23 +3562,19 @@
 									"query": [
 										{
 											"key": "login",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "pwd",
-											"value": "ARA",
-											"equals": true
+											"value": "ARA"
 										},
 										{
 											"key": "connection",
-											"value": "AEPROD",
-											"equals": true
+											"value": "AEPROD"
 										},
 										{
 											"key": "client",
-											"value": "100",
-											"equals": true
+											"value": "100"
 										}
 									]
 								},
@@ -3642,6 +3587,7 @@
 				},
 				{
 					"name": "GET Functional Tests",
+					"description": null,
 					"item": [
 						{
 							"name": "Activities",
@@ -3782,8 +3728,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[name:REST*,type:JOBS|JOBP]",
-													"equals": true
+													"value": "[name:REST*,type:JOBS|JOBP]"
 												}
 											]
 										}
@@ -3835,8 +3780,179 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[status:1900]",
-													"equals": true
+													"value": "[status:1900]"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "search - Activities - v1 - with filters: status fail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"tests[\"at least 1 object found\"] = jsonData.count > 0;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/search/v1/Activities?filters=[status:1800]&order=normal",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"search",
+												"v1",
+												"Activities"
+											],
+											"query": [
+												{
+													"key": "filters",
+													"value": "[status:1800]"
+												},
+												{
+													"key": "order",
+													"value": "normal"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "search - Activities - v1 - with filters: status fail with filters",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"tests[\"at least 1 object found\"] = jsonData.count > 0;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/search/v1/Activities?filters=[status:1800]&order=normal",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"search",
+												"v1",
+												"Activities"
+											],
+											"query": [
+												{
+													"key": "filters",
+													"value": "[status:1800]"
+												},
+												{
+													"key": "order",
+													"value": "normal"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "search - Activities - v1 - with filters: status fail (Reverse Order)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"tests[\"at least 1 object found\"] = jsonData.count > 0;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/search/v1/Activities?filters=[status:1800]&order=normal&sort_by=endtime",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"search",
+												"v1",
+												"Activities"
+											],
+											"query": [
+												{
+													"key": "filters",
+													"value": "[status:1800]"
+												},
+												{
+													"key": "order",
+													"value": "normal"
+												},
+												{
+													"key": "sort_by",
+													"value": "endtime"
 												}
 											]
 										}
@@ -3887,8 +4003,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[host:*WIN*]",
-													"equals": true
+													"value": "[host:*WIN*]"
 												}
 											]
 										}
@@ -3942,8 +4057,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.2",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.2"
 												}
 											]
 										}
@@ -4041,8 +4155,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -4096,8 +4209,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.2",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.2"
 												}
 											]
 										}
@@ -4151,8 +4263,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.2",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.2"
 												}
 											]
 										}
@@ -4248,8 +4359,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -4303,8 +4413,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.JSCH.1",
-													"equals": true
+													"value": "REST.JSCH.1"
 												}
 											]
 										}
@@ -4354,8 +4463,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -4409,8 +4517,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												}
 											]
 										}
@@ -4461,8 +4568,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -4517,8 +4623,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.ABORT.JOBP.1",
-													"equals": true
+													"value": "REST.ABORT.JOBP.1"
 												}
 											]
 										}
@@ -4614,13 +4719,11 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												},
 												{
 													"key": "type",
-													"value": "JOBS",
-													"equals": true
+													"value": "JOBS"
 												}
 											]
 										}
@@ -4674,8 +4777,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												}
 											]
 										}
@@ -4725,8 +4827,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -4780,8 +4881,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.2",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.2"
 												}
 											]
 										}
@@ -4830,13 +4930,11 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												},
 												{
 													"key": "type",
-													"value": "REP",
-													"equals": true
+													"value": "REP"
 												}
 											]
 										}
@@ -4891,8 +4989,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.ABORT.JOBP.1",
-													"equals": true
+													"value": "REST.ABORT.JOBP.1"
 												}
 											]
 										}
@@ -4942,8 +5039,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -4992,8 +5088,7 @@
 											"query": [
 												{
 													"key": "jobp",
-													"value": "TEST.RUN.FLOW.1",
-													"equals": true
+													"value": "TEST.RUN.FLOW.1"
 												}
 											]
 										}
@@ -5042,8 +5137,7 @@
 											"query": [
 												{
 													"key": "jobp",
-													"value": "TEST.RUN.FLOW.1",
-													"equals": true
+													"value": "TEST.RUN.FLOW.1"
 												}
 											]
 										}
@@ -5093,8 +5187,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -5144,8 +5237,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -5195,8 +5287,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -5246,8 +5337,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -5297,8 +5387,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1091004",
-													"equals": true
+													"value": "1091004"
 												}
 											]
 										}
@@ -5348,8 +5437,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -5399,8 +5487,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -5450,13 +5537,11 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1577006",
-													"equals": true
+													"value": "1577006"
 												},
 												{
 													"key": "tsknum",
-													"value": "2",
-													"equals": true
+													"value": "2"
 												}
 											]
 										}
@@ -5506,13 +5591,11 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1577006",
-													"equals": true
+													"value": "1577006"
 												},
 												{
 													"key": "tsknum",
-													"value": "2",
-													"equals": true
+													"value": "2"
 												}
 											]
 										}
@@ -5566,13 +5649,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "manualrelease",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -5626,13 +5707,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "alias",
-													"value": "MY_NEW_JOB",
-													"equals": true
+													"value": "MY_NEW_JOB"
 												}
 											]
 										}
@@ -5686,13 +5765,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "queue",
-													"value": "QUEUE.TEST.1",
-													"equals": true
+													"value": "QUEUE.TEST.1"
 												}
 											]
 										}
@@ -5746,23 +5823,19 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "queue",
-													"value": "QUEUE.TEST.1",
-													"equals": true
+													"value": "QUEUE.TEST.1"
 												},
 												{
 													"key": "alias",
-													"value": "MY_JOB",
-													"equals": true
+													"value": "MY_JOB"
 												},
 												{
 													"key": "manualrelease",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -5816,13 +5889,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "alias",
-													"value": "\"MY NEW JOB\"",
-													"equals": true
+													"value": "\"MY NEW JOB\""
 												}
 											]
 										}
@@ -5876,13 +5947,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "queue",
-													"value": "\"QUEUE TEST.1\"",
-													"equals": true
+													"value": "\"QUEUE TEST.1\""
 												}
 											]
 										}
@@ -5894,7 +5963,73 @@
 						},
 						{
 							"name": "Agents",
+							"description": null,
 							"item": [
+								{
+									"name": "Authentication-login-OK (Client 0)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8ea09bed-3aef-432c-a02e-edcdeb4aa92a",
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"tests[\"Status code is 200\"] = responseCode.code === 200;",
+													"tests[\"Body matches string\"] = responseBody.has(\"token\");",
+													"tests[\"Body matches string\"] = responseBody.has(\"expdate\");",
+													"",
+													"",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"TOKEN0\", jsonData.token);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/login/v1/auth?login=UC&pwd=Un1ver$e&connection=AEPROD0&client=0",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"login",
+												"v1",
+												"auth"
+											],
+											"query": [
+												{
+													"key": "login",
+													"value": "UC"
+												},
+												{
+													"key": "pwd",
+													"value": "Un1ver$e"
+												},
+												{
+													"key": "connection",
+													"value": "AEPROD0"
+												},
+												{
+													"key": "client",
+													"value": "0"
+												}
+											]
+										},
+										"description": "Authentication\nlogin\nOK"
+									},
+									"response": []
+								},
 								{
 									"name": "show - Agents - v1",
 									"event": [
@@ -5917,7 +6052,7 @@
 										"header": [
 											{
 												"key": "Token",
-												"value": "{{TOKEN}}"
+												"value": "{{TOKEN0}}"
 											}
 										],
 										"body": {},
@@ -5939,58 +6074,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "WIN01",
-													"equals": true
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "quit - Agents - v1",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"type": "text/javascript",
-												"exec": [
-													"tests[\"returns status\"] = responseBody.has(\"status\");",
-													"tests[\"status is success\"] = responseBody.has(\"success\");",
-													"tests[\"Status code is 200\"] = responseCode.code === 200;"
-												]
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Token",
-												"value": "{{TOKEN}}"
-											}
-										],
-										"body": {},
-										"url": {
-											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/quit/v1/Agents?name=WIN01",
-											"protocol": "http",
-											"host": [
-												"{{HOSTNAME}}"
-											],
-											"port": "{{PORT}}",
-											"path": [
-												"{{APPNAME}}",
-												"api",
-												"awa",
-												"quit",
-												"v1",
-												"Agents"
-											],
-											"query": [
-												{
-													"key": "name",
-													"value": "WIN01",
-													"equals": true
+													"value": "WIN01"
 												}
 											]
 										}
@@ -6017,7 +6101,7 @@
 										"header": [
 											{
 												"key": "Token",
-												"value": "{{TOKEN}}"
+												"value": "{{TOKEN0}}"
 											}
 										],
 										"body": {},
@@ -6039,8 +6123,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "WIN01",
-													"equals": true
+													"value": "WIN01"
 												}
 											]
 										}
@@ -6067,7 +6150,7 @@
 										"header": [
 											{
 												"key": "Token",
-												"value": "{{TOKEN}}"
+												"value": "{{TOKEN0}}"
 											}
 										],
 										"body": {},
@@ -6089,8 +6172,154 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "WIN01",
-													"equals": true
+													"value": "WIN01"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "renew Transfer Key - Agents - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"tests[\"Status code is 200\"] = responseCode.code === 200;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN0}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/renewkey/v1/Agents?name=WIN01",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"renewkey",
+												"v1",
+												"Agents"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "WIN01"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "quit - Agents - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"tests[\"Status code is 200\"] = responseCode.code === 200;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN0}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/quit/v1/Agents?name=WIN02",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"quit",
+												"v1",
+												"Agents"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "WIN02"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete - Agents - v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"tests[\"Status code is 200\"] = responseCode.code === 200;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN0}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/delete/v1/Agents?name=WIN02",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"delete",
+												"v1",
+												"Agents"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "WIN02"
 												}
 											]
 										}
@@ -6102,6 +6331,7 @@
 						},
 						{
 							"name": "All",
+							"description": null,
 							"item": [
 								{
 									"name": "nooperation - All - v1 - no param",
@@ -6191,8 +6421,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "*",
-													"equals": true
+													"value": "*"
 												}
 											]
 										}
@@ -6286,13 +6515,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[type:JOBP|JOBS]",
-													"equals": true
+													"value": "[type:JOBP|JOBS]"
 												}
 											]
 										}
@@ -6343,13 +6570,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[type:JOBS]",
-													"equals": true
+													"value": "[type:JOBS]"
 												}
 											]
 										}
@@ -6400,13 +6625,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[reversetype,type:JOBP|JOBS]",
-													"equals": true
+													"value": "[reversetype,type:JOBP|JOBS]"
 												}
 											]
 										}
@@ -6458,13 +6681,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[reversetype,type:JOBP|JOBS,created:LAST10YEARS]",
-													"equals": true
+													"value": "[reversetype,type:JOBP|JOBS,created:LAST10YEARS]"
 												}
 											]
 										}
@@ -6516,13 +6737,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[reversetype,type:JOBP|JOBS,modified:LAST10YEARS]",
-													"equals": true
+													"value": "[reversetype,type:JOBP|JOBS,modified:LAST10YEARS]"
 												}
 											]
 										}
@@ -6574,13 +6793,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[reversetype,type:JOBP|JOBS,used:LAST10YEARS]",
-													"equals": true
+													"value": "[reversetype,type:JOBP|JOBS,used:LAST10YEARS]"
 												}
 											]
 										}
@@ -6632,23 +6849,19 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "text",
-													"value": "*TITLE*",
-													"equals": true
+													"value": "*TITLE*"
 												},
 												{
 													"key": "search_text_in_title",
-													"value": "",
-													"equals": true
+													"value": ""
 												},
 												{
 													"key": "filters",
-													"value": "[type:JOBP|JOBS,created:LAST10YEARS]",
-													"equals": true
+													"value": "[type:JOBP|JOBS,created:LAST10YEARS]"
 												}
 											]
 										}
@@ -6700,13 +6913,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "*",
-													"equals": true
+													"value": "*"
 												},
 												{
 													"key": "filters",
-													"value": "[folder:.*REST.*]",
-													"equals": true
+													"value": "[folder:.*REST.*]"
 												}
 											]
 										}
@@ -6757,13 +6968,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.TESTS.JOBP.1",
-													"equals": true
+													"value": "REST.AUTO.TESTS.JOBP.1"
 												},
 												{
 													"key": "method",
-													"value": "exportwithreferences",
-													"equals": true
+													"value": "exportwithreferences"
 												}
 											]
 										}
@@ -6815,8 +7024,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												}
 											]
 										}
@@ -6869,8 +7077,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1365527",
-													"equals": true
+													"value": "1365527"
 												}
 											]
 										}
@@ -6922,18 +7129,15 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST*",
-													"equals": true
+													"value": "REST*"
 												},
 												{
 													"key": "filters",
-													"value": "[folder:.*REST.*]",
-													"equals": true
+													"value": "[folder:.*REST.*]"
 												},
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -6984,8 +7188,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												}
 											]
 										}
@@ -7038,13 +7241,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.TESTS.JOBP.1",
-													"equals": true
+													"value": "REST.AUTO.TESTS.JOBP.1"
 												},
 												{
 													"key": "method",
-													"value": "showreferences",
-													"equals": true
+													"value": "showreferences"
 												}
 											]
 										}
@@ -7096,23 +7297,19 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "*",
-													"equals": true
+													"value": "*"
 												},
 												{
 													"key": "text",
-													"value": "*TITLE*",
-													"equals": true
+													"value": "*TITLE*"
 												},
 												{
 													"key": "search_text_in_title",
-													"value": "",
-													"equals": true
+													"value": ""
 												},
 												{
 													"key": "filters",
-													"value": "[type:JOBP|JOBS,created:LAST10YEARS,folder",
-													"equals": true
+													"value": "[type:JOBP|JOBS,created:LAST10YEARS,folder"
 												}
 											]
 										}
@@ -7163,18 +7360,119 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.TESTS.JOBP.1",
-													"equals": true
+													"value": "REST.AUTO.TESTS.JOBP.1"
 												},
 												{
 													"key": "method",
-													"value": "exportwithreferences",
-													"equals": true
+													"value": "exportwithreferences"
 												},
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get Estimated Runtime",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"tests[\"at least 1 object found\"] = jsonData.count > 0;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/ert/v1/Statistics?name=REST.AUTO.RUNNABLE.JOBS.2",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"ert",
+												"v1",
+												"Statistics"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "REST.AUTO.RUNNABLE.JOBS.2"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get ERT (JOBS)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"tests[\"returns status\"] = responseBody.has(\"status\");",
+													"tests[\"status is success\"] = responseBody.has(\"success\");",
+													"",
+													"",
+													"var jsonData = JSON.parse(responseBody);",
+													"tests[\"at least 1 object found\"] = jsonData.count > 0;"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Token",
+												"value": "{{TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "http://{{HOSTNAME}}:{{PORT}}/{{APPNAME}}/api/awa/ert/v1/Statistics?name=POC.JOBS.1",
+											"protocol": "http",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"port": "{{PORT}}",
+											"path": [
+												"{{APPNAME}}",
+												"api",
+												"awa",
+												"ert",
+												"v1",
+												"Statistics"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "POC.JOBS.1"
 												}
 											]
 										}
@@ -7186,6 +7484,7 @@
 						},
 						{
 							"name": "AutoForecasts",
+							"description": null,
 							"item": [
 								{
 									"name": "forecast  - Activities- v1 - no method (error)",
@@ -7272,8 +7571,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "recalculate",
-													"equals": true
+													"value": "recalculate"
 												}
 											]
 										}
@@ -7325,8 +7623,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "query",
-													"equals": true
+													"value": "query"
 												}
 											]
 										}
@@ -7378,13 +7675,11 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "query",
-													"equals": true
+													"value": "query"
 												},
 												{
 													"key": "filters",
-													"value": "[type:JOBS,name:*]",
-													"equals": true
+													"value": "[type:JOBS,name:*]"
 												}
 											]
 										}
@@ -7396,6 +7691,7 @@
 						},
 						{
 							"name": "Calendars",
+							"description": null,
 							"item": [
 								{
 									"name": "list - Calendars - v1",
@@ -7488,8 +7784,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "CALE.REST.1",
-													"equals": true
+													"value": "CALE.REST.1"
 												}
 											]
 										}
@@ -7501,6 +7796,7 @@
 						},
 						{
 							"name": "Changes",
+							"description": null,
 							"item": [
 								{
 									"name": "nooperation - Changes - v1 - (fail)",
@@ -7544,8 +7840,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[title:OLD.*,date:LAST1DAY]",
-													"equals": true
+													"value": "[title:OLD.*,date:LAST1DAY]"
 												}
 											]
 										}
@@ -7597,8 +7892,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[title:OLD.*,date:LAST1DAY]",
-													"equals": true
+													"value": "[title:OLD.*,date:LAST1DAY]"
 												}
 											]
 										}
@@ -7696,13 +7990,11 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[title:.*,date:LAST1YEAR]",
-													"equals": true
+													"value": "[title:.*,date:LAST1YEAR]"
 												},
 												{
 													"key": "maxresults",
-													"value": "1",
-													"equals": true
+													"value": "1"
 												}
 											]
 										}
@@ -7754,13 +8046,11 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[title:OLD.*,date:LAST1DAY]",
-													"equals": true
+													"value": "[title:OLD.*,date:LAST1DAY]"
 												},
 												{
 													"key": "maxresults",
-													"value": "as",
-													"equals": true
+													"value": "as"
 												}
 											]
 										}
@@ -7772,6 +8062,7 @@
 						},
 						{
 							"name": "Conn",
+							"description": null,
 							"item": [
 								{
 									"name": "display - Conn - v1 - name (REST)",
@@ -7817,8 +8108,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.REST.CONN.1",
-													"equals": true
+													"value": "REST.AUTO.REST.CONN.1"
 												}
 											]
 										}
@@ -7869,8 +8159,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.DB.CONN.1",
-													"equals": true
+													"value": "REST.AUTO.DB.CONN.1"
 												}
 											]
 										}
@@ -7921,8 +8210,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.SAP.CONN.1",
-													"equals": true
+													"value": "REST.AUTO.SAP.CONN.1"
 												}
 											]
 										}
@@ -7934,6 +8222,7 @@
 						},
 						{
 							"name": "Client",
+							"description": null,
 							"item": [
 								{
 									"name": "nooperation - Client - v1 - no param",
@@ -8078,8 +8367,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showclients",
-													"equals": true
+													"value": "showclients"
 												}
 											]
 										}
@@ -8185,8 +8473,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showclients",
-													"equals": true
+													"value": "showclients"
 												}
 											]
 										}
@@ -8198,6 +8485,7 @@
 						},
 						{
 							"name": "Docu",
+							"description": null,
 							"item": [
 								{
 									"name": "show - Docu - v1 ",
@@ -8241,8 +8529,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.API.JOBS.WIN.DOCU.XML.1",
-													"equals": true
+													"value": "REST.API.JOBS.WIN.DOCU.XML.1"
 												}
 											]
 										}
@@ -8254,6 +8541,7 @@
 						},
 						{
 							"name": "Engine",
+							"description": null,
 							"item": [
 								{
 									"name": "nooperation - Engine - v1 - no param",
@@ -8349,8 +8637,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showclients",
-													"equals": true
+													"value": "showclients"
 												}
 											]
 										}
@@ -8405,8 +8692,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showdb",
-													"equals": true
+													"value": "showdb"
 												}
 											]
 										}
@@ -8463,8 +8749,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showhosts",
-													"equals": true
+													"value": "showhosts"
 												}
 											]
 										}
@@ -8521,8 +8806,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "hostgroups",
-													"equals": true
+													"value": "hostgroups"
 												}
 											]
 										}
@@ -8579,8 +8863,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showusers",
-													"equals": true
+													"value": "showusers"
 												}
 											]
 										}
@@ -8638,8 +8921,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showengine",
-													"equals": true
+													"value": "showengine"
 												}
 											]
 										}
@@ -8694,8 +8976,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showmessages",
-													"equals": true
+													"value": "showmessages"
 												}
 											]
 										}
@@ -8753,8 +9034,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showusage",
-													"equals": true
+													"value": "showusage"
 												}
 											]
 										}
@@ -8810,8 +9090,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "showmessages",
-													"equals": true
+													"value": "showmessages"
 												}
 											]
 										}
@@ -8823,6 +9102,7 @@
 						},
 						{
 							"name": "Jobf",
+							"description": null,
 							"item": [
 								{
 									"name": "display - Jobf - v1 - name",
@@ -8868,8 +9148,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.JOBF.1",
-													"equals": true
+													"value": "REST.AUTO.JOBF.1"
 												}
 											]
 										}
@@ -8881,6 +9160,7 @@
 						},
 						{
 							"name": "Jobp",
+							"description": null,
 							"item": [
 								{
 									"name": "display - Jobs - v1 - name",
@@ -8926,8 +9206,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBP.NEW.1",
-													"equals": true
+													"value": "JOBP.NEW.1"
 												}
 											]
 										}
@@ -9072,8 +9351,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "*",
-													"equals": true
+													"value": "*"
 												}
 											]
 										}
@@ -9124,8 +9402,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "MY.REST.JOB.1",
-													"equals": true
+													"value": "MY.REST.JOB.1"
 												}
 											]
 										}
@@ -9176,8 +9453,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "MY.CIT.JOB.2",
-													"equals": true
+													"value": "MY.CIT.JOB.2"
 												}
 											]
 										}
@@ -9228,13 +9504,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.API.JOBS.WIN.RUN.1",
-													"equals": true
+													"value": "REST.API.JOBS.WIN.RUN.1"
 												},
 												{
 													"key": "v",
-													"value": "3",
-													"equals": true
+													"value": "3"
 												}
 											]
 										}
@@ -9246,6 +9520,7 @@
 						},
 						{
 							"name": "Notifications",
+							"description": null,
 							"item": [
 								{
 									"name": "show - Notifications  - v1 ",
@@ -9295,6 +9570,7 @@
 						},
 						{
 							"name": "OneOfs",
+							"description": null,
 							"item": [
 								{
 									"name": "Auth OK",
@@ -9338,23 +9614,19 @@
 											"query": [
 												{
 													"key": "login",
-													"value": "ARA",
-													"equals": true
+													"value": "ARA"
 												},
 												{
 													"key": "pwd",
-													"value": "ARA",
-													"equals": true
+													"value": "ARA"
 												},
 												{
 													"key": "connection",
-													"value": "AEPROD",
-													"equals": true
+													"value": "AEPROD"
 												},
 												{
 													"key": "client",
-													"value": "100",
-													"equals": true
+													"value": "100"
 												}
 											]
 										}
@@ -9390,13 +9662,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "EXPTR.EXPTR.JOBP.GENER_FLUX_METRICS_IMO",
-													"equals": true
+													"value": "EXPTR.EXPTR.JOBP.GENER_FLUX_METRICS_IMO"
 												},
 												{
 													"key": "token",
-													"value": "{{TOKEN}}",
-													"equals": true
+													"value": "{{TOKEN}}"
 												}
 											]
 										}
@@ -9450,8 +9720,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "JOBP.STD.1",
-													"equals": true
+													"value": "JOBP.STD.1"
 												}
 											]
 										}
@@ -9507,23 +9776,19 @@
 											"query": [
 												{
 													"key": "login",
-													"value": "ARA",
-													"equals": true
+													"value": "ARA"
 												},
 												{
 													"key": "pwd",
-													"value": "ARA",
-													"equals": true
+													"value": "ARA"
 												},
 												{
 													"key": "connection",
-													"value": "AEPROD",
-													"equals": true
+													"value": "AEPROD"
 												},
 												{
 													"key": "client",
-													"value": "100",
-													"equals": true
+													"value": "100"
 												}
 											]
 										},
@@ -9560,13 +9825,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "TEST.RUN.FLOW.1dfgdfg",
-													"equals": true
+													"value": "TEST.RUN.FLOW.1dfgdfg"
 												},
 												{
 													"key": "token",
-													"value": "bomrer9nk10okope29p4udt9q2",
-													"equals": true
+													"value": "bomrer9nk10okope29p4udt9q2"
 												}
 											]
 										}
@@ -9578,6 +9841,7 @@
 						},
 						{
 							"name": "Prompts",
+							"description": null,
 							"item": [
 								{
 									"name": "run - Activities - v1 - simple execution",
@@ -9626,8 +9890,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.2",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.2"
 												}
 											]
 										}
@@ -9680,8 +9943,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -9736,18 +9998,15 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1098036",
-													"equals": true
+													"value": "1098036"
 												},
 												{
 													"key": "name",
-													"value": "JOBS.AC.1",
-													"equals": true
+													"value": "JOBS.AC.1"
 												},
 												{
 													"key": "override",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -9802,18 +10061,15 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1098038",
-													"equals": true
+													"value": "1098038"
 												},
 												{
 													"key": "name",
-													"value": "JOBS.AC.1",
-													"equals": true
+													"value": "JOBS.AC.1"
 												},
 												{
 													"key": "override",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -9868,18 +10124,15 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1098040",
-													"equals": true
+													"value": "1098040"
 												},
 												{
 													"key": "name",
-													"value": "JOBS.AC.1",
-													"equals": true
+													"value": "JOBS.AC.1"
 												},
 												{
 													"key": "override",
-													"value": "N",
-													"equals": true
+													"value": "N"
 												}
 											]
 										}
@@ -9891,6 +10144,7 @@
 						},
 						{
 							"name": "Statistics",
+							"description": null,
 							"item": [
 								{
 									"name": "search - Statistics - v1 - load test (fail)",
@@ -9983,8 +10237,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[name:REST*]",
-													"equals": true
+													"value": "[name:REST*]"
 												}
 											]
 										}
@@ -10036,8 +10289,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[type:JOBS,name:*CMD*,status:1900]",
-													"equals": true
+													"value": "[type:JOBS,name:*CMD*,status:1900]"
 												}
 											]
 										}
@@ -10089,8 +10341,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[type:JOBS|JOBP,name:REST*,activation:LAST1YEAR]",
-													"equals": true
+													"value": "[type:JOBS|JOBP,name:REST*,activation:LAST1YEAR]"
 												}
 											]
 										}
@@ -10142,8 +10393,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[type:JOBS|JOBP,name:REST*,start:LAST1YEAR]",
-													"equals": true
+													"value": "[type:JOBS|JOBP,name:REST*,start:LAST1YEAR]"
 												}
 											]
 										}
@@ -10195,8 +10445,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[type:JOBS|JOBP,name:REST*,end:LAST1YEAR]",
-													"equals": true
+													"value": "[type:JOBS|JOBP,name:REST*,end:LAST1YEAR]"
 												}
 											]
 										}
@@ -10292,8 +10541,7 @@
 											"query": [
 												{
 													"key": "filters",
-													"value": "[name:REST*,status:1900]",
-													"equals": true
+													"value": "[name:REST*,status:1900]"
 												}
 											]
 										}
@@ -10345,8 +10593,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												}
 											]
 										}
@@ -10358,6 +10605,7 @@
 						},
 						{
 							"name": "Users",
+							"description": null,
 							"item": [
 								{
 									"name": "getpriv - Users - v1 ",
@@ -10404,8 +10652,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "ARA/ARA",
-													"equals": true
+													"value": "ARA/ARA"
 												}
 											]
 										}
@@ -10457,18 +10704,15 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												},
 												{
 													"key": "type",
-													"value": "JOBS",
-													"equals": true
+													"value": "JOBS"
 												},
 												{
 													"key": "right",
-													"value": "R",
-													"equals": true
+													"value": "R"
 												}
 											]
 										}
@@ -10564,8 +10808,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "PROD/PROD",
-													"equals": true
+													"value": "PROD/PROD"
 												}
 											]
 										}
@@ -10662,8 +10905,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -10711,8 +10953,7 @@
 											"query": [
 												{
 													"key": "additional",
-													"value": "true",
-													"equals": true
+													"value": "true"
 												}
 											]
 										}
@@ -10760,8 +11001,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "QUEUE.TST.1",
-													"equals": true
+													"value": "QUEUE.TST.1"
 												}
 											]
 										}
@@ -10809,8 +11049,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "QUEUE.TST.1",
-													"equals": true
+													"value": "QUEUE.TST.1"
 												}
 											]
 										}
@@ -10865,13 +11104,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "QUEUE.TST.1",
-													"equals": true
+													"value": "QUEUE.TST.1"
 												},
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -10926,13 +11163,11 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "QUEUE.TST.1",
-													"equals": true
+													"value": "QUEUE.TST.1"
 												},
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -10947,9 +11182,11 @@
 				},
 				{
 					"name": "POST Functional Tests",
+					"description": null,
 					"item": [
 						{
 							"name": "All",
+							"description": null,
 							"item": [
 								{
 									"name": "delete - All - v1 - usage",
@@ -10994,8 +11231,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -11007,6 +11243,7 @@
 						},
 						{
 							"name": "Comments",
+							"description": null,
 							"item": [
 								{
 									"name": "run - Activities - v1 - simple execution (setup)",
@@ -11055,8 +11292,7 @@
 											"query": [
 												{
 													"key": "name",
-													"value": "REST.AUTO.RUNNABLE.JOBS.1",
-													"equals": true
+													"value": "REST.AUTO.RUNNABLE.JOBS.1"
 												}
 											]
 										}
@@ -11110,13 +11346,11 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "1365161",
-													"equals": true
+													"value": "1365161"
 												},
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -11171,8 +11405,7 @@
 											"query": [
 												{
 													"key": "runid",
-													"value": "{{RUNID}}",
-													"equals": true
+													"value": "{{RUNID}}"
 												}
 											]
 										}
@@ -11184,6 +11417,7 @@
 						},
 						{
 							"name": "Jobp",
+							"description": null,
 							"item": [
 								{
 									"name": "create - Jobp - v1 - commit",
@@ -11233,8 +11467,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11289,8 +11522,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11348,8 +11580,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11407,8 +11638,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11466,8 +11696,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11524,8 +11753,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -11575,8 +11803,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -11627,8 +11854,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -11833,8 +12059,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11891,8 +12116,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -11953,8 +12177,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12019,8 +12242,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12081,8 +12303,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12240,12 +12461,10 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
-										},
-										"description": null
+										}
 									},
 									"response": []
 								},
@@ -12297,8 +12516,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12353,8 +12571,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12409,8 +12626,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12710,8 +12926,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12815,8 +13030,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -12967,8 +13181,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -13121,8 +13334,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -13177,8 +13389,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -13233,8 +13444,7 @@
 											"query": [
 												{
 													"key": "commit",
-													"value": "Y",
-													"equals": true
+													"value": "Y"
 												}
 											]
 										}
@@ -13249,9 +13459,11 @@
 				},
 				{
 					"name": "AWA Usage Tests",
+					"description": null,
 					"item": [
 						{
 							"name": "help",
+							"description": null,
 							"item": [
 								{
 									"name": "help - NoObject",
@@ -13692,6 +13904,7 @@
 						},
 						{
 							"name": "usage",
+							"description": null,
 							"item": [
 								{
 									"name": "search - All - Usage",
@@ -13735,8 +13948,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -13785,8 +13997,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -13835,8 +14046,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -13885,8 +14095,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -13935,8 +14144,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -13985,8 +14193,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14035,8 +14242,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14085,8 +14291,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14135,8 +14340,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14185,8 +14389,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14235,8 +14438,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14285,8 +14487,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14335,8 +14536,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14385,8 +14585,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14435,8 +14634,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14485,8 +14683,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
@@ -14535,8 +14732,7 @@
 											"query": [
 												{
 													"key": "method",
-													"value": "usage",
-													"equals": true
+													"value": "usage"
 												}
 											]
 										}
